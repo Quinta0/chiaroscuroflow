@@ -122,8 +122,8 @@ body {
 	--background-primary: var(--background-primary-light, rgb(255, 255, 255));
 	--background-secondary: var(--background-secondary-light, rgb(240, 240, 240));
 	--text-normal: var(--text-normal-light, rgb(51, 51, 51));
-	--code-background: var(--code-background, rgb(169, 152, 152));
-	--math-background: var(--math-background, rgb(169, 152, 152));
+	--code-background: var(--code-background, rgb(240, 240, 240));
+	--math-background: var(--math-background, rgb(240, 240, 240));
 }
 
 .theme-dark {
@@ -133,20 +133,29 @@ body {
 	--code-background: var(--code-background-dark, rgb(45, 45, 45));
 	--math-background: var(--code-background-dark, rgb(45, 45, 45));
 }
+/* Light Theme */
+.theme-light {
+	--background-primary: rgb(240, 128, 128); /* Light Coral */
+}
 
-/* Mesh gradient backgrounds */
 .theme-light .workspace-leaf-content[data-type="markdown"],
 .theme-light .markdown-preview-view,
 .theme-light .view-content {
 	background: none;
 	background-image:
-		radial-gradient(at 40% 20%, rgba(var(--background-primary-light, 255 255 255) / 0.8) 0px, transparent 50%),
-		radial-gradient(at 80% 0%, rgba(var(--background-secondary-light, 240 240 240) / 0.8) 0px, transparent 50%),
-		radial-gradient(at 0% 50%, rgba(var(--background-primary-light, 255 255 255) / 0.8) 0px, transparent 50%),
-		radial-gradient(at 80% 50%, rgba(var(--background-secondary-light, 240 240 240) / 0.8) 0px, transparent 50%),
-		radial-gradient(at 0% 100%, rgba(var(--background-primary-light, 255 255 255) / 0.8) 0px, transparent 50%),
-		radial-gradient(at 80% 100%, rgba(var(--background-secondary-light, 240 240 240) / 0.8) 0px, transparent 50%),
-		radial-gradient(at 0% 0%, rgba(var(--background-primary-light, 255 255 255) / 0.8) 0px, transparent 50%);
+		radial-gradient(circle at 30% 30%, #FFDAB9, transparent 60%),    /* Soft Peach */
+		radial-gradient(circle at 70% 70%, #FFFACD, transparent 60%),  /* Pale Gold */
+		radial-gradient(circle at 50% 50%, #F08080, transparent 60%),  /* Light Coral */
+		radial-gradient(circle at 50% 50%, #B0E0E6, transparent 60%), /* Powder Blue */
+		radial-gradient(circle at 30% 70%, #98FF98, transparent 60%),   /* Mint Green */
+		radial-gradient(circle at 70% 30%, #ADD8E6, transparent 60%), /* Pale Blue */
+		radial-gradient(circle at 60% 40%, #E6E6FA, transparent 60%), /* Lavender */
+		radial-gradient(circle at 40% 60%, #FFB6C1, transparent 60%);   /* Light Pink */
+}
+
+/* Dark Theme */
+.theme-dark {
+	--background-primary: rgb(25, 18, 63); /* Dark Slate Blue */
 }
 
 .theme-dark .workspace-leaf-content[data-type="markdown"],
@@ -154,19 +163,44 @@ body {
 .theme-dark .view-content {
 	background: none;
 	background-image:
-		radial-gradient(at 40% 20%, rgba(var(--background-primary-dark, 30 30 30) / 0.8) 0px, transparent 50%),
-		radial-gradient(at 80% 0%, rgba(var(--background-secondary-dark, 45 45 45) / 0.8) 0px, transparent 50%),
-		radial-gradient(at 0% 50%, rgba(var(--background-primary-dark, 30 30 30) / 0.8) 0px, transparent 50%),
-		radial-gradient(at 80% 50%, rgba(var(--background-secondary-dark, 45 45 45) / 0.8) 0px, transparent 50%),
-		radial-gradient(at 0% 100%, rgba(var(--background-primary-dark, 30 30 30) / 0.8) 0px, transparent 50%),
-		radial-gradient(at 80% 100%, rgba(var(--background-secondary-dark, 45 45 45) / 0.8) 0px, transparent 50%),
-		radial-gradient(at 0% 0%, rgba(var(--background-primary-dark, 30 30 30) / 0.8) 0px, transparent 50%);
+		radial-gradient(circle at 30% 30%, #19123FFF, transparent 60%),    /* Deep Purple */
+		radial-gradient(circle at 70% 70%, #483D8B, transparent 60%),  /* Dark Slate Blue */
+		radial-gradient(circle at 50% 50%, #191970, transparent 60%),  /* Midnight Blue */
+		radial-gradient(circle at 50% 50%, #8B008B, transparent 60%), /* Dark Magenta */
+		radial-gradient(circle at 30% 70%, #008B8B, transparent 60%),   /* Dark Cyan */
+		radial-gradient(circle at 70% 30%, #2F4F4F, transparent 60%), /* Dark Slate Gray */
+		radial-gradient(circle at 60% 40%, #556B2F, transparent 60%), /* Dark Olive Green */
+		radial-gradient(circle at 40% 60%, #696969, transparent 60%);   /* Dim Gray */
 }
 
-/* Ensure content is visible over the gradient */
-.markdown-preview-view,
-.markdown-source-view {
-	background-color: transparent !important;
+/* Force gradient on all relevant elements */
+.theme-light .workspace-split.mod-vertical,
+.theme-light .workspace-split.mod-horizontal,
+.theme-light .workspace-leaf-content,
+.theme-dark .workspace-split.mod-vertical,
+.theme-dark .workspace-split.mod-horizontal,
+.theme-dark .workspace-leaf-content {
+	background: none !important;
+}
+
+/* Adjust text colors for better readability */
+.theme-light {
+	--text-normal: #333333; /* Dark gray for light theme */
+}
+
+.theme-dark {
+	--text-normal: #FFFFFF; /* White for dark theme */
+}
+
+/* Ensure proper contrast for UI elements */
+.theme-light .workspace-tab-header-container,
+.theme-light .workspace-tab-header.is-active {
+	background-color: rgba(255, 255, 255, 0.7);
+}
+
+.theme-dark .workspace-tab-header-container,
+.theme-dark .workspace-tab-header.is-active {
+	background-color: rgba(0, 0, 0, 0.3);
 }
 
 .cm-s-obsidian pre.HyperMD-codeblock,
@@ -207,3 +241,4 @@ body, .cm-s-obsidian {
 h1, h2, h3, h4, h5, h6 {
 	font-family: var(--font-header);
 }
+
